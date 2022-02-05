@@ -1,0 +1,86 @@
+﻿@model IEnumerable<MyAspCoreFinalProject.Models.BloodDonor>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<style>
+    .avatar {
+        vertical-align: middle;
+        width: 100px;
+        height: 100px;
+    }
+</style>
+
+<h1>Index</h1>
+
+@*<p>
+        <a asp-action="Create">Create New</a>
+    </p>*@
+<div class="container btn-group">
+    <div class="col-10">
+        <h2>Blood Donor Details</h2>
+    </div>
+    <div>
+        <a asp-action="Create" class="btn btn-sm btn-success">Create New</a>
+    </div>
+</div>
+
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.ProfilePhoto)*@
+                Donor Image
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.PhotoUrl)*@
+
+                <img src="~/Images/@item.PhotoUrl" alt="" height="120" width="120" />
+            </td>
+
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
+
+
